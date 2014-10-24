@@ -1,0 +1,25 @@
+{
+  "name": "js-tdd-boilerplate",
+  "version": "1.0.0",
+  "description": "TDD boilerplate for JavaScript projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greghaskins/js-tdd-boilerplate.git"
+  },
+  "keywords": [
+    "tdd",
+    "javascript",
+    "boilerplate",
+    "greghaskins"
+  ],
+  "author": "Gregory Haskins <greg@greghaskins.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/greghaskins/js-tdd-boilerplate/issues"
+  },
+  "homepage": "https://github.com/greghaskins/js-tdd-boilerplate"
+}
