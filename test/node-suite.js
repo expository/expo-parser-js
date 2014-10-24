@@ -1,10 +1,23 @@
 "use strict";
 
-var Mocha = require('mocha');
+var Mocha = require('mocha'),
+    fs = require('fs'),
+    path = require('path');
 
-var mocha = new Mocha({ui: 'bdd', reporter: 'spec'});
-mocha.addFile('./test/spec/boilerplate-spec.js');
+var mocha = new Mocha;
 
+fs.readdirSync('./test/spec').filter(function(file){
+    return file.substr(-3) === '.js';
+
+}).forEach(function(file){
+    mocha.addFile(
+        path.join('./test/spec', file)
+    );
+});
+
+// Now, you can run the tests.
 mocha.run(function(failures){
-    process.exit(failures);
+    process.on('exit', function () {
+        process.exit(failures);
+    });
 });
