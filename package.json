@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test-node && npm run test-browser",
     "test-node": "node test/node-suite.js",
-    "test-browser": "./node_modules/.bin/karma start test/karma.conf.js --browsers Firefox,PhantomJS"
+    "test-browser": "./node_modules/karma/bin/karma start ./test/karma.conf.js --browsers Firefox,PhantomJS"
   },
   "repository": {
     "type": "git",
