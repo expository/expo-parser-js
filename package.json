@@ -4,7 +4,9 @@
   "description": "TDD boilerplate for JavaScript projects",
   "main": "index.js",
   "scripts": {
-    "test": "node test/node-suite.js"
+    "test": "npm run test-node && npm run test-browser",
+    "test-node": "node test/node-suite.js",
+    "test-browser": "./node_modules/.bin/karma start test/karma.conf.js --browsers Firefox,PhantomJS"
   },
   "repository": {
     "type": "git",
