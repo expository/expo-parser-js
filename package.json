@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/greghaskins/js-tdd-boilerplate/issues"
   },
-  "homepage": "https://github.com/greghaskins/js-tdd-boilerplate"
+  "homepage": "https://github.com/greghaskins/js-tdd-boilerplate",
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "mocha": "^2.0.1"
+  }
 }
