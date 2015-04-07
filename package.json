@@ -4,9 +4,10 @@
   "description": "TDD boilerplate for JavaScript projects",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test-node && npm run test-browser",
-    "test-node": "node test/node-suite.js",
-    "test-browser": "./node_modules/karma/bin/karma start ./test/karma.conf.js --browsers Firefox,PhantomJS"
+    "test": "npm run test:node && npm run test:headless",
+    "test:node": "node test/node-suite.js",
+    "test:karma": "./node_modules/karma/bin/karma start ./test/karma.conf.js",
+    "test:headless": "npm run test:karma -- --browsers Firefox,PhantomJS,Chrome_headless"
   },
   "repository": {
     "type": "git",
