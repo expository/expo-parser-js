@@ -12,7 +12,8 @@
     }
 
     function boilerplate() {
-        return 'boilerplate';
+        var something = require('./lib/something');    
+        return something.go ? 'all systems GO' : 'NO-GO';
     }
 
 }());

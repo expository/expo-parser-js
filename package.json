@@ -25,9 +25,11 @@
   },
   "homepage": "https://github.com/greghaskins/js-tdd-boilerplate",
   "devDependencies": {
+    "brfs": "^1.2.0",
+    "browserify": "^6.2.0",
     "chai": "^1.9.2",
     "karma": "^0.12.24",
-    "karma-chai": "^0.1.0",
+    "karma-browserify": "^4.1.2",
     "karma-chrome-launcher": "^0.1.5",
     "karma-firefox-launcher": "^0.1.3",
     "karma-mocha": "^0.1.9",

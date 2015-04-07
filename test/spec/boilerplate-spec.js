@@ -1,17 +1,11 @@
 "use strict";
 
-var boilerplate;
+var boilerplate = require('../../boilerplate.js');
 
-var expect;
-
-if (typeof require == 'function') {
-    boilerplate = require('../../boilerplate.js');
-
-    expect = require('chai').expect;
-}
+var expect = require('chai').expect;
 
 describe('smoke test', function () {
     it('should pass', function () {
-        expect(boilerplate()).to.equal('boilerplate');
+        expect(boilerplate()).to.equal('all systems GO');
     });
 });
