@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Browser tests" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="$PROJECT_DIR$/test/karma.conf.js">
-    <envs />
-    <RunnerSettings RunnerId="KarmaJavaScriptTestRunnerRun" />
-    <ConfigurationWrapper RunnerId="KarmaJavaScriptTestRunnerRun" />
-    <method />
-  </configuration>
-</component>
