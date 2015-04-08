@@ -1,7 +1,7 @@
 {
-  "name": "js-tdd-boilerplate",
-  "version": "1.0.0",
-  "description": "TDD boilerplate for JavaScript projects",
+  "name": "expo-parser-js",
+  "version": "0.0.1",
+  "description": "JavaScript parser for Expository formatted API docs",
   "main": "main.js",
   "scripts": {
     "test": "npm run test:mocha && npm run test:headless",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/greghaskins/js-tdd-boilerplate.git"
+    "url": "https://github.com/greghaskins/expo-parser-js.git"
   },
   "keywords": [
     "tdd",
@@ -25,9 +25,9 @@
   "author": "Gregory Haskins <greg@greghaskins.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/greghaskins/js-tdd-boilerplate/issues"
+  "url": "https://github.com/greghaskins/expo-parser-js/issues"
   },
-  "homepage": "https://github.com/greghaskins/js-tdd-boilerplate",
+  "homepage": "https://github.com/greghaskins/expo-parser-js",
   "devDependencies": {
     "brfs": "^1.2.0",
     "browserify": "^6.2.0",
