@@ -1,19 +1,8 @@
 "use strict";
-(function () {
 
-    // node.js
-    if (typeof module != 'undefined') {
-        module.exports = boilerplate;
-    }
+function boilerplate() {
+    var something = require('./lib/something');
+    return something.go ? 'all systems GO' : 'NO-GO';
+}
 
-    // browser
-    if (typeof window != 'undefined') {
-        !window.boilerplate && (window.boilerplate = boilerplate);
-    }
-
-    function boilerplate() {
-        var something = require('./lib/something');    
-        return something.go ? 'all systems GO' : 'NO-GO';
-    }
-
-}());
+module.exports = boilerplate;
