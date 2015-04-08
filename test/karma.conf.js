@@ -14,36 +14,44 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      '*.js',
-      'lib/*.js',
-      'test/spec/*.js'
-    ],
+    files: [{
+      pattern: 'test/**/*.js',
+      watched: true,
+      included: true,
+      served: true
+    }, {
+      pattern: 'main.js',
+      watched: true,
+      included: false,
+      served: false
+    }, {
+      pattern: 'lib/**/*.js',
+      watched: true,
+      included: false,
+      served: false
+    }, ],
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '*.js' : ['browserify'],
-      'lib/*.js' : ['browserify'],
-      'test/spec/*.js': [ 'browserify' ]
+      'test/spec/**/*.js': ['browserify']
     },
 
     browserify: {
       debug: true,
-      transform: [ 'brfs' ]
+      transform: ['brfs']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['dots'],
 
 
     // web server port

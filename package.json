@@ -2,18 +2,13 @@
   "name": "js-tdd-boilerplate",
   "version": "1.0.0",
   "description": "TDD boilerplate for JavaScript projects",
-  "main": "index.js",
   "scripts": {
     "test": "npm run test:mocha && npm run test:headless",
-    
     "test:mocha": "./node_modules/mocha/bin/mocha ./test/spec",
-    "watch:mocha": "watch 'npm run test:mocha' . --wait=1",
-    
+    "watch:mocha": "onchange **/*.js **/*.json -- npm run test:mocha",
     "test:karma": "./node_modules/karma/bin/karma start ./test/karma.conf.js",
     "watch:karma": "npm run test:karma -- --auto-watch --no-single-run",
-    
     "test:headless": "npm run test:karma -- --browsers Firefox,PhantomJS,Chrome_headless",
-
     "tdd": "parallelshell 'npm run watch:mocha' 'npm run watch:karma'"
   },
   "repository": {
@@ -43,6 +38,7 @@
     "karma-mocha": "^0.1.9",
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.0.1",
+    "onchange": "^1.0.0",
     "parallelshell": "^1.1.1",
     "watch": "^0.16.0"
   }
