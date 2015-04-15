@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test:mocha && npm run test:headless",
     "test:mocha": "./node_modules/mocha/bin/mocha --reporter dot ./src/test/spec",
-    "watch:mocha": "onchange src/**/*.js '**/*.json' -- npm run test:mocha",
+    "watch:mocha": "./node_modules/.bin/onchange 'src/**/*.js' '**/*.json' -- npm run test:mocha",
     "test:karma": "./node_modules/karma/bin/karma start ./src/test/karma.conf.js",
     "watch:karma": "npm run test:karma -- --auto-watch --no-single-run",
     "test:headless": "npm run test:karma -- --browsers Firefox,PhantomJS,Chrome_headless",
