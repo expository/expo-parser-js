@@ -20,7 +20,12 @@ module.exports = function(config) {
       included: true,
       served: true
     }, {
-      pattern: 'src/**/.js',
+      pattern: 'test/e2e/*.js',
+      watched: true,
+      included: true,
+      served: true
+    }, {
+      pattern: 'src/**/*.js',
       watched: true,
       included: false,
       served: false
@@ -34,7 +39,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/spec/**/*.js': ['browserify']
+      'test/**/*.js': ['browserify']
     },
 
     browserify: {
