@@ -1,6 +1,6 @@
 "use strict";
 
-var boilerplate = require('../../main.js');
+var boilerplate = require('../../src/main.js');
 
 var expect = require('chai').expect;
 
