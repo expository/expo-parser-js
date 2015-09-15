@@ -56,5 +56,16 @@ describe('HttpParser', function () {
     // TODO: Mutli-valued headers combined with commas
     // TODO: Any validation at all?
     })
+
+    describe('body', function () {
+      it('gets the body content as-is', function () {
+        var result = parser.parseRequest('POST /\naccept:*\n\nThe body content')
+        expect(result.body).to.equal('The body content')
+      })
+      it("doesn't split the body across empty lines", function () {
+        var result = parser.parseRequest('PUT /\n\nFirst line\n\nSecond line')
+        expect(result.body).to.equal('First line\n\nSecond line')
+      })
+    })
   })
 })

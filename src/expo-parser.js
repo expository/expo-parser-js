@@ -4,6 +4,7 @@ require('es6-promise').polyfill()
 
 var htmlparser = require('htmlparser2')
 var DomUtils = htmlparser.DomUtils
+var assign = require('lodash.assign')
 
 module.exports = {
   parseHTML: parseHTML,
@@ -65,20 +66,37 @@ function parseRequestResponsePairs (textBlocks) {
 
 function HttpParser () {}
 HttpParser.prototype.parseRequest = function (requestText) {
-  var lines = requestText.trim().split(/\n/)
-
-  var parts = lines.shift().trim().split(/ +/)
   var request = {}
-  request.method = parts[0]
-  request.uri = parts[1]
-  if (parts[2]) request.httpVersion = parts[2]
 
-  var headers = request.headers = {}
-  var headerRegex = /\s*\:\s*/
-  for (var i = 0; i < lines.length; i++) {
-    var header = lines[i].split(headerRegex)
-    headers[header[0].toLowerCase()] = header[1]
+  var regex = /^([^]*?)(?:\n\n([^]*))?$/g
+  var split = regex.exec(requestText)
+  var preamble = split[1]
+  var body = split[2]
+
+  var lines = preamble.trim().split(/\n/)
+  var firstLine = lines.shift()
+  assign(request, parseRequestLine(firstLine))
+  request.headers = parseHeaders(lines)
+  if (body) request.body = body
+  return request
+
+  function parseRequestLine (line) {
+    var requestLine = line.trim().split(/ +/)
+    var result = {
+      method: requestLine[0],
+      uri: requestLine[1]
+    }
+    if (requestLine[2]) result.httpVersion = requestLine[2]
+    return result
   }
 
-  return request
+  function parseHeaders (headerLines) {
+    var headers = {}
+    var headerRegex = /\s*\:\s*/
+    for (var i = 0; i < headerLines.length; i++) {
+      var header = headerLines[i].split(headerRegex)
+      headers[header[0].toLowerCase()] = header[1]
+    }
+    return headers
+  }
 }
