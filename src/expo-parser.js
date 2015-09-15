@@ -68,15 +68,15 @@ function HttpParser () {}
 HttpParser.prototype.parseRequest = function (requestText) {
   var request = {}
 
-  var regex = /^([^]*?)(?:\n\n([^]*))?$/g
+  var regex = /^([^]*?)(?:(?:\n\n|\r\n\r\n)([^]*))?$/g
   var split = regex.exec(requestText)
   var preamble = split[1]
   var body = split[2]
 
-  var lines = preamble.trim().split(/\n/)
-  var firstLine = lines.shift()
+  var preambleLines = preamble.trim().split(/\n/)
+  var firstLine = preambleLines.shift()
   assign(request, parseRequestLine(firstLine))
-  request.headers = parseHeaders(lines)
+  request.headers = parseHeaders(preambleLines)
   if (body) request.body = body
   return request
 
@@ -92,10 +92,11 @@ HttpParser.prototype.parseRequest = function (requestText) {
 
   function parseHeaders (headerLines) {
     var headers = {}
-    var headerRegex = /\s*\:\s*/
     for (var i = 0; i < headerLines.length; i++) {
-      var header = headerLines[i].split(headerRegex)
-      headers[header[0].toLowerCase()] = header[1]
+      var parts = headerLines[i].split(':')
+      var name = parts[0].trim().toLowerCase()
+      var value = parts[1].trim()
+      headers[name] = value
     }
     return headers
   }

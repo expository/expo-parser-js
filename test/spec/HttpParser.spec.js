@@ -50,11 +50,12 @@ describe('HttpParser', function () {
         expect(result.headers).to.deep.equal({'content-type': 'application/json', 'accept': '*'})
       })
       it('trims extra spaces', function () {
-        var result = parser.parseRequest('GET /\nAccept    :  text/html    ')
-        expect(result.headers).to.deep.equal({'accept': 'text/html'})
+        var result = parser.parseRequest('GET /\n  Accept    :  text/html    \nServer:foo\n')
+        expect(result.headers).to.deep.equal({'accept': 'text/html', 'server': 'foo'})
       })
     // TODO: Mutli-valued headers combined with commas
     // TODO: Any validation at all?
+    // TODO: line continuation in header values
     })
 
     describe('body', function () {
@@ -66,6 +67,15 @@ describe('HttpParser', function () {
         var result = parser.parseRequest('PUT /\n\nFirst line\n\nSecond line')
         expect(result.body).to.equal('First line\n\nSecond line')
       })
+    })
+
+    it('also works with CRLF line breaks', function () {
+      var result = parser.parseRequest('HEAD /blah HTTP/1.1\r\naccept:*\r\ndate:today\r\n\r\nBody is a wonderland')
+      expect(result.method).to.equal('HEAD')
+      expect(result.uri).to.equal('/blah')
+      expect(result.httpVersion).to.equal('HTTP/1.1')
+      expect(result.headers).to.deep.equal({'accept': '*', 'date': 'today'})
+      expect(result.body).to.equal('Body is a wonderland')
     })
   })
 })
