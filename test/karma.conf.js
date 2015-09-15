@@ -15,6 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [{
+      pattern: './node_modules/phantomjs-polyfill/bind-polyfill.js',
+      watched: false
+    }, {
       pattern: 'test/spec/**/*.js',
       watched: true,
       included: true,
@@ -44,7 +47,8 @@ module.exports = function(config) {
 
     browserify: {
       debug: true,
-      transform: ['brfs']
+      transform: ['brfs'],
+      paths: ['./node_modules', './src']
     },
 
 
