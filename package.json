@@ -1,12 +1,12 @@
 {
-  "name": "expo-parser-js",
+  "name": "expo-parser",
   "version": "0.0.1",
-  "description": "JavaScript parser for Expository formatted API docs",
-  "main": "main.js",
+  "description": "JavaScript parser for Expo-style API docs",
+  "main": "src/expo-parser.js",
   "scripts": {
     "test": "npm run test:mocha && npm run test:headless",
     "test:mocha": "./node_modules/mocha/bin/mocha --reporter dot --recursive ./test",
-    "watch:mocha": "./node_modules/.bin/onchange 'src/**/*.js' '**/*.json' -- npm run test:mocha",
+    "watch:mocha": "./node_modules/.bin/onchange 'src/**/*.js' '**/*.json' 'test/**/*.js' -- npm run test:mocha",
     "test:karma": "./node_modules/karma/bin/karma start ./test/karma.conf.js",
     "watch:karma": "npm run test:karma -- --auto-watch --no-single-run",
     "test:headless": "npm run test:karma -- --browsers Firefox,PhantomJS,Chrome_headless",
@@ -25,7 +25,7 @@
   "author": "Gregory Haskins <greg@greghaskins.com>",
   "license": "MIT",
   "bugs": {
-  "url": "https://github.com/greghaskins/expo-parser-js/issues"
+    "url": "https://github.com/greghaskins/expo-parser-js/issues"
   },
   "homepage": "https://github.com/greghaskins/expo-parser-js",
   "devDependencies": {
@@ -41,6 +41,11 @@
     "mocha": "^2.0.1",
     "onchange": "^1.0.0",
     "parallelshell": "^1.1.1",
+    "phantomjs-polyfill": "0.0.1",
     "watch": "^0.16.0"
+  },
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "htmlparser2": "^3.8.3"
   }
 }
