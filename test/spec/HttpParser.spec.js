@@ -36,5 +36,25 @@ describe('HttpParser', function () {
         expect(result.httpVersion).to.equal('HTTP/1.0')
       })
     })
+
+    describe('headers', function () {
+      it('gets simple key: value pairs', function () {
+        var result = parser.parseRequest('GET /\ncontent-type: text/html\nconnection: keep-alive\n')
+        expect(result.headers).to.deep.equal(
+          {'content-type': 'text/html',
+          'connection': 'keep-alive'}
+        )
+      })
+      it('converts names to lowercase, since they are case-insensitive', function () {
+        var result = parser.parseRequest('GET /\nContent-Type: application/json\nAccept: *')
+        expect(result.headers).to.deep.equal({'content-type': 'application/json', 'accept': '*'})
+      })
+      it('trims extra spaces', function () {
+        var result = parser.parseRequest('GET /\nAccept    :  text/html    ')
+        expect(result.headers).to.deep.equal({'accept': 'text/html'})
+      })
+    // TODO: Mutli-valued headers combined with commas
+    // TODO: Any validation at all?
+    })
   })
 })
