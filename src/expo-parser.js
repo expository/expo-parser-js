@@ -65,8 +65,10 @@ function parseRequestResponsePairs (textBlocks) {
 
 function HttpParser () {}
 HttpParser.prototype.parseRequest = function (requestText) {
-  var method = requestText.split(' ')[0]
+  var parts = requestText.trim().split(/ +/)
   return {
-    method: method
+    method: parts[0],
+    uri: parts[1],
+    httpVersion: parts[2]
   }
 }
